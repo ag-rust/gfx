@@ -543,7 +543,12 @@ impl hal::Instance<Backend> for Instance {
         use raw_window_handle::RawWindowHandle;
 
         match has_handle.raw_window_handle() {
-            #[cfg(all(unix, not(target_os = "android"), not(target_os = "macos"), not(target_os = "solaris")))]
+            #[cfg(all(
+                unix,
+                not(target_os = "android"),
+                not(target_os = "macos"),
+                not(target_os = "solaris")
+            ))]
             RawWindowHandle::Wayland(handle)
                 if self
                     .extensions
